@@ -30,7 +30,7 @@ namespace Ui { class SciCal; }
 QT_END_NAMESPACE
 
 
-//SciCal class I created that inherits from QMainWindow, from QT frameWork
+//LO1. SciCal class I created that inherits from QMainWindow, from QT frameWork
 class SciCal : public QMainWindow
 {
     Q_OBJECT
