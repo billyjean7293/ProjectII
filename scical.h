@@ -1,3 +1,25 @@
+/** @file scicall.h
+
+ *  @brief Header file
+           
+
+ *
+
+ *  Header file created that contains all of the slots. 
+    Slots are functions that can be connected to signals
+    There are 18 slots but I was only able to use 17 with
+    error
+    
+
+ *
+
+ *  @author Billy Jean Baptiste
+
+ *  @bug Not able to delete 'void on_exponentButton_released()'
+         slot without getting a reference to it error.
+
+ */
+
 #ifndef SCICAL_H
 #define SCICAL_H
 
@@ -8,7 +30,7 @@ namespace Ui { class SciCal; }
 QT_END_NAMESPACE
 
 
-
+//SciCal class I created that inherits from QMainWindow, from QT frameWork
 class SciCal : public QMainWindow
 {
     Q_OBJECT
@@ -20,6 +42,8 @@ public:
 private:
     Ui::SciCal *ui;
 
+
+//These slots are created for the all of the buttons on calculator UI
 private slots:
     void piNumberButton();
     void numPressed();
