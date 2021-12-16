@@ -10,15 +10,7 @@ bool addOperation = false;
 bool subtractOperation = false;
 bool mulitplyOperation = false;
 bool divideOperation = false;
-bool sineOperation = false;
-bool cosineOperation = false;
-bool tangentOperation = false;
-bool lnOperation = false;
-bool squareRootOperation = false;
-bool inverseOperation = false;
-bool tenExponentOperation = false;
-bool squareOperation = false;
-bool rootOperation = false;
+
 
 
 //reference code to https://www.youtube.com/watch?v=txGRU7OrTZo
@@ -85,15 +77,6 @@ void SciCal::functionButtons(){
     subtractOperation = false;
     mulitplyOperation = false;
     divideOperation = false;
-    sineOperation = false;
-    cosineOperation = false;
-    tangentOperation = false;
-    lnOperation = false;
-    squareRootOperation = false;
-    inverseOperation = false;
-    tenExponentOperation = false;
-    squareOperation = false;
-    rootOperation = false;
 
     QString displayValue = ui->Display->text();
     currentValue = displayValue.toDouble();
