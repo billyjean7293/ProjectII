@@ -1,5 +1,4 @@
 /** @file scical.cpp
-
  *  @brief scical.cpp to implement slots
            
  *
@@ -34,36 +33,36 @@ bool subtractOperation = false;
 bool mulitplyOperation = false;
 bool divideOperation = false;
 
-
 //reference code to https://www.youtube.com/watch?v=txGRU7OrTZo
-//This code is to connect match object names (button0 - button 9) with signals
 SciCal::SciCal(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::SciCal)
 {
     ui->setupUi(this);
-    connect(ui->piButton, SIGNAL(released()), this, SLOT(piNumberButton()));
+
+
 
     ui->Display->setText(QString::number(currentValue));
     QPushButton *numBttons[10];
 
     //initializing the button number to match button object when pressed
-    //Can do this individually but a for loop is more efficient/less code
     for(int i = 0; i < 10; ++i){
         QString buttonName = "button" + QString::number(i);
 
         numBttons[i] = SciCal::findChild<QPushButton *>(buttonName);
         connect(numBttons[i], SIGNAL(released()), this, SLOT(numPressed()));
-    }
 
-        //connectors: connecting the objects's name to slots
+
+
+    }
+     //connectors: connecting the objects's name to slots
     connect(ui->additionButton, SIGNAL(released()), this, SLOT(functionButtons()));
     connect(ui->subtractButton, SIGNAL(released()), this, SLOT(functionButtons()));
     connect(ui->multiplyButton, SIGNAL(released()), this, SLOT(functionButtons()));
     connect(ui->divideButton, SIGNAL(released()), this, SLOT(functionButtons()));
     connect(ui->enterButton, SIGNAL(released()), this, SLOT(enterButtonPressed()));
     connect(ui->negativeButton, SIGNAL(released()), this, SLOT(signChange()));
-
+    connect(ui->piButton, SIGNAL(released()), this, SLOT(piNumberButton()));
 
 }
 
@@ -73,10 +72,20 @@ SciCal::~SciCal()
     delete ui;
 }
 
+/** @brief Function for when the
+ *  numPressed object is clicked
 
 
-//reference code to https://www.youtube.com/watch?v=txGRU7OrTZo
-//This slot function is used to set up the number objects 
+ *  reference code to https://www.youtube.com/watch?v=txGRU7OrTZo
+    This slot function is used to set up the numbers on the
+    calculator. When user clicks a number, the corresponding number
+    is displayed.
+
+
+ *  @return void, the cooresponding math operation is performed
+ *
+
+ */
 void SciCal::numPressed(){
     QPushButton *button = (QPushButton *)sender();
     QString buttonValue = button->text();
@@ -92,18 +101,32 @@ void SciCal::numPressed(){
 
 
 }
-//reference code to https://www.youtube.com/watch?v=txGRU7OrTZo
-//set up the math operations
+/** @brief Function for when the
+ *  functionButton object is clicked
+
+
+ *  reference code to https://www.youtube.com/watch?v=txGRU7OrTZo
+    This slot function is used to set up the math
+    function objects, when the user clicks any of the
+    basic math operations '+, -, x or ÷'
+
+
+ *  @return void, the cooresponding math operation is performed
+ *
+
+ */
 void SciCal::functionButtons(){
     addOperation = false;
     subtractOperation = false;
     mulitplyOperation = false;
     divideOperation = false;
 
+
     QString displayValue = ui->Display->text();
     currentValue = displayValue.toDouble();
     QPushButton *button = (QPushButton *)sender();
     QString buttonValue = button->text();
+
 
     if(QString::compare(buttonValue, "+") == 0 ){
         addOperation = true;
@@ -118,8 +141,36 @@ void SciCal::functionButtons(){
 
 }
 
-//reference code to https://www.youtube.com/watch?v=txGRU7OrTZo
-//set up the enter button object
+/** @brief Pi number
+
+
+ *  when the user clicks the symbol 'π', pi,
+ *  the value 3.14159 is displayed
+
+
+ *  @return void, returns number for pi
+ *
+
+ */
+//Set the value for pi in the calculator
+void SciCal::piNumberButton(){
+   const double pi = M_PI;
+   ui->Display->setText(QString::number(pi));
+
+}
+
+/** @brief function for enterButton object
+
+
+ *  representation for an equals button. When a user
+ *  wants to get the results of a math operation of two numbers,
+ *  the enterButton object is pressed
+
+
+ *  @return void, return the return of a math operation or function
+ *
+
+ */
 void SciCal::enterButtonPressed(){
     double answer;
     answer = 0.0;
@@ -139,15 +190,17 @@ void SciCal::enterButtonPressed(){
     ui->Display->setText(QString::number(answer));
 }
 
+/** @brief changeSign function
 
-//Slot to set the value for pi on the calculator
-void SciCal::piNumberButton(){
-   const double pi = M_PI;
-   ui->Display->setText(QString::number(pi));
 
-}
+ *  when a user wants to change the sign value of a number,
+ *  the signChange object is pressed.
 
-//set up the sign button object
+
+ *  @return void, returns the negative number of the current number
+ *
+
+ */
 void SciCal::signChange(){
 
     QPushButton * button = (QPushButton* ) sender();
@@ -163,7 +216,16 @@ void SciCal::signChange(){
 }
 
 
-//set up the deciaml button object
+/** @brief decimal function
+
+
+ *  adds a demical place
+
+
+ *  @return void, returns a deicaml
+ *
+
+ */
 void SciCal::on_decimalButton_released()
 {
     ui->Display->setText(ui->Display->text() + ".");
@@ -171,14 +233,36 @@ void SciCal::on_decimalButton_released()
 
 }
 
-//set up the clear button object
+/** @brief function for clearButton object
+
+
+ *  when user wants to clear the display.
+
+
+ *  @return void, return a 0 when pressed
+ *
+
+ */
+
+
 void SciCal::on_clearButton_pressed()
 {
     double clearScreen = 0.0;
     ui->Display->setText(QString::number(clearScreen));
 }
 
-//set up the sine button object
+
+/** @brief function for sinButton object
+
+
+ *  a trigonometry function for sine.
+
+
+ *  @return void, returns the sine of a value, the value in radians
+ *  by default
+ *
+
+ */
 void SciCal::on_sinButton_pressed()
 {
     QString displayValue = ui->Display->text();
@@ -187,7 +271,18 @@ void SciCal::on_sinButton_pressed()
     ui->Display->setText(QString::number(sine));
 }
 
-//set up the cosine button object
+
+/** @brief function for cosinButton object
+
+
+ *  a trigonometry function for cosine.
+
+
+ *  @return void, returns the cosine of a value, the value in radians
+ *  by default
+ *
+
+ */
 void SciCal::on_cosButton_pressed()
 {
     QString displayValue = ui->Display->text();
@@ -196,7 +291,18 @@ void SciCal::on_cosButton_pressed()
     ui->Display->setText(QString::number(cosine));
 }
 
-//set up the tangent button object
+
+/** @brief function for tanButton object
+
+
+ *  a trigonometry function for tangent.
+
+
+ *  @return void, returns the tangent of a value, the value in radians
+ *  by default
+ *
+
+ */
 void SciCal::on_tanButton_pressed()
 {
     QString displayValue = ui->Display->text();
@@ -205,7 +311,17 @@ void SciCal::on_tanButton_pressed()
     ui->Display->setText(QString::number(tangent));
 }
 
-//set up the inverse button object
+
+/** @brief function for inverse object
+
+
+ *  a function for the inverse of a value
+
+
+ *  @return void, returns the inverse value
+ *
+
+ */
 void SciCal::on_inverseButton_pressed()
 {
     QString displayValue = ui->Display->text();
@@ -214,7 +330,18 @@ void SciCal::on_inverseButton_pressed()
     ui->Display->setText(QString::number(inverse));
 }
 
-//set up the ten to the x button object
+
+/** @brief function for tenExponent object
+
+
+ *  a function for the number of zero a user
+ *  wants, base ten
+
+
+ *  @return void, returns value ten to the number of the current value
+ *
+
+ */
 void SciCal::on_tenExponent_pressed()
 {
     QString displayValue = ui->Display->text();
@@ -223,7 +350,16 @@ void SciCal::on_tenExponent_pressed()
     ui->Display->setText(QString::number(tenExponent, 'g', 20));
 }
 
-//set up the natural log button object
+/** @brief function for lnButton object
+
+
+ *  a function for natural log function
+
+
+ *  @return void, returns the natural log of current value
+ *
+
+ */
 void SciCal::on_lnButton_pressed()
 {
     QString displayValue = ui->Display->text();
@@ -232,7 +368,17 @@ void SciCal::on_lnButton_pressed()
     ui->Display->setText(QString::number(naturalLog, 'g', 20));
 }
 
-//set up the square root button object
+
+/** @brief function for squareRoot object
+
+
+ *  takes the square root of the current value
+
+
+ *  @return void, returns square root of the current value
+ *
+
+ */
 void SciCal::on_sqaureRootButton_pressed()
 {
     QString displayValue = ui->Display->text();
@@ -241,7 +387,17 @@ void SciCal::on_sqaureRootButton_pressed()
     ui->Display->setText(QString::number(squareRoot, 'g', 20));
 }
 
-//set up the squared button object
+
+/** @brief function for squareButton object
+
+
+ *  sqaure the current value
+
+
+ *  @return void, return the current number squared
+ *
+
+ */
 void SciCal::on_squareButton_pressed()
 {
     QString displayValue = ui->Display->text();
@@ -250,7 +406,18 @@ void SciCal::on_squareButton_pressed()
     ui->Display->setText(QString::number(square, 'g', 20));
 }
 
-//set up the exponent button object
+
+/** @brief function for sinButton object
+
+
+ *  a trigonometry function for sine.
+
+
+ *  @return void, returns the sine of a value, the value in radians
+ *  by default
+ *
+
+ */
 void SciCal::on_exponentButton_pressed()
 {
     double exponentNum = M_E;
@@ -260,19 +427,28 @@ void SciCal::on_exponentButton_pressed()
     ui->Display->setText(QString::number(exponent, 'g', 20));
 }
 
-//Unused function. Cannot delete without reference error
-//Not able to figure out how to delete without error
+
 void SciCal::on_exponentButton_released()
 {
 
 }
 
-//set up the log button object
+/** @brief function for logButton object
+
+
+ *  a trigonometry function for sine.
+
+
+ *  @return void, returns the sine of a value, the value in radians
+ *  by default
+ *
+
+ */
 void SciCal::on_logButton_pressed()
 {
+
     QString displayValue = ui->Display->text();
     double dblDisplayValue = displayValue.toDouble();
     double logX = (log10(dblDisplayValue));
     ui->Display->setText(QString::number(logX, 'g', 20));
 }
-
