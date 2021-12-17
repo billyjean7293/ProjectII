@@ -43,6 +43,10 @@ private:
     Ui::SciCal *ui;
 
 
+//syntax for slots is in
+         snake case. Unable to refractor without a reference
+         error. Functions are automatically created in this
+         file (in snake case) when created in scical.ui.
 //These slots are created for the all of the buttons on calculator UI
 private slots:
     void piNumberButton();
