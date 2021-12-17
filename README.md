@@ -3,5 +3,7 @@
 // a creatation of a basic scientific calculator
 
 
-https://user-images.githubusercontent.com/81057927/146463881-e4f0b45b-16bd-42fc-af50-ec5a2c35cd8e.MOV
+
+
+https://user-images.githubusercontent.com/81057927/146466854-0762d0b9-66a8-4c68-963a-9c1020f42e7e.MOV
 
