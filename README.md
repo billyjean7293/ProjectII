@@ -4,7 +4,7 @@
 //This project is object-oriented based, to recreate a GUI of a basic scientific calculator.
 //Created during the fall of 2021 with my expertise being at beginner to intermediate in c++.
 //I created this project to explore and learn more about using the framework Qt.
-//I have gain a tremendous amount of knowlegde of Qt from working on this project
+//I have gain a tremendous amount of knowlegde of Qt from working on this project.
 
 
 
