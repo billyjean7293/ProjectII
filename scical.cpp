@@ -1,5 +1,6 @@
 /** @file scical.cpp
- *  @brief scical.cpp to implement slots
+ *  @brief scical.cpp file to implement slots.
+           Slots are functions in QT.
            
  *
  *  scical.cpp file is use to implement and
