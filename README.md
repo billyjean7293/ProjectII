@@ -8,5 +8,6 @@ I have gain a tremendous amount of knowlegde of Qt from working on this project.
 
 
 
-https://user-images.githubusercontent.com/81057927/146466854-0762d0b9-66a8-4c68-963a-9c1020f42e7e.MOV
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/81057927/146656811-a8faebf9-3dc5-445a-9d74-1d1eb03de06f.gif)
 
