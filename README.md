@@ -11,3 +11,19 @@ I have gain a tremendous amount of knowlegde of Qt from working on this project.
 # Demonstration
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/81057927/146656811-a8faebf9-3dc5-445a-9d74-1d1eb03de06f.gif)
 
+# Getting Started
+To run the program, it is best to download the Qt framework from Qt.io
+The files from the readMe are the files used for this project.
+
+# Built with
+This project was built on Qt using C++
+
+# Contribution
+To help contribute, you can email me at "bjeanbaptiste5042@eagle.fgcu.edu". I would appreciate anyone that has expertise 
+knowlegde using Qt and can provide their knowlegde on how to make a more efficient program.
+
+# Author
+Billy Jean Baptiste
+
+# Acknowledgments 
+I would like to acknowledge the youtube channel and youtuber Derek Banas. His channel really helped understanding how to use Qt.
