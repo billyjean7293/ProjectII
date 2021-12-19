@@ -18,6 +18,9 @@ The files from the readMe are the files used for this project.
 # Built with
 This project was built on Qt using C++
 
+# Diagram
+![image](https://user-images.githubusercontent.com/81057927/146692645-0af4c452-423d-496e-9896-64fa0c22bbcf.png)
+
 # Contribution
 To help contribute, you can email me at "bjeanbaptiste5042@eagle.fgcu.edu". I would appreciate anyone that has expertise 
 knowlegde using Qt and can provide their knowlegde on how to make a more efficient program.
