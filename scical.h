@@ -68,4 +68,24 @@ private slots:
     void on_exponentButton_released();
     void on_logButton_pressed();
 };
+
+class calculate : public SciCal{
+public:
+    double A, B;
+public:
+
+    double add(double A, double B) {
+           return A + B;
+       }
+    double subtract(double A, double B) {
+           return A - B;
+       }
+    double multiply(double A, double B) {
+           return A * B;
+       }
+    double divide(double A, double B) {
+        return A / B;
+    }
+};
+
 #endif // SCICAL_H
