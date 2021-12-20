@@ -173,22 +173,20 @@ void SciCal::piNumberButton(){
 
  */
 void SciCal::enterButtonPressed(){
-    double answer;
-    answer = 0.0;
+    calculate cal;
     QString displayValue = ui->Display->text();
     double dblDisplayValue = displayValue.toDouble();
     if (addOperation || subtractOperation || mulitplyOperation || divideOperation){
         if(addOperation){
-            answer = currentValue + dblDisplayValue;
+            ui->Display->setText(QString::number(cal.add(currentValue, dblDisplayValue)));
         }else if(subtractOperation){
-            answer = currentValue - dblDisplayValue;
+            ui->Display->setText(QString::number(cal.subtract(currentValue, dblDisplayValue)));
         }else if(mulitplyOperation){
-            answer = currentValue * dblDisplayValue;
+            ui->Display->setText(QString::number(cal.multiply(currentValue, dblDisplayValue)));
         }else{
-            answer = currentValue / dblDisplayValue;
+            ui->Display->setText(QString::number(cal.divide(currentValue, dblDisplayValue)));
         }
     }
-    ui->Display->setText(QString::number(answer));
 }
 
 /** @brief changeSign function
